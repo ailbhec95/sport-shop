@@ -1,0 +1,353 @@
+:root {
+    --black: #000;
+    --white: #fff;
+    --ink: #111;
+    --muted: #6b6b6b;
+    --stripe: #fff;
+    --paper: #f4f4f4;
+    --font-display: "Archivo Black", Impact, sans-serif;
+    --font-body: Inter, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--white);
+}
+
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+header {
+    background: var(--black);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 64px;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.stripes {
+    width: 18px;
+    height: 22px;
+    background: repeating-linear-gradient(
+        115deg,
+        transparent 0 3px,
+        var(--white) 3px 5px
+    );
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    margin-left: auto;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.cart-toggle {
+    background: var(--white);
+    color: var(--black);
+    border: 0;
+    padding: 8px 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 5rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    right: -40px;
+    top: 0;
+    width: 180px;
+    height: 100%;
+    background: repeating-linear-gradient(
+        115deg,
+        transparent 0 18px,
+        rgba(255, 255, 255, 0.12) 18px 28px
+    );
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    max-width: 12ch;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 40ch;
+    color: #cfcfcf;
+    margin-bottom: 1.75rem;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    border: 0;
+    padding: 12px 22px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.hero .btn {
+    background: var(--white);
+    color: var(--black);
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 10px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+}
+
+.shop {
+    padding: 3.5rem 0;
+}
+
+.shop h2 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+}
+
+.lead {
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    max-width: 62ch;
+}
+
+.list-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.list-tab {
+    background: var(--white);
+    border: 1px solid #ddd;
+    padding: 8px 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.list-tab.is-active {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.product-card {
+    border: 1px solid #eee;
+    cursor: pointer;
+    background: var(--paper);
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+}
+
+.product-visual {
+    height: 180px;
+    position: relative;
+}
+
+.product-visual.footwear { background: linear-gradient(135deg, #111, #444); }
+.product-visual.apparel { background: linear-gradient(135deg, #1a1a1a, #6b6b6b); }
+.product-visual.accessories { background: linear-gradient(135deg, #222, #888); }
+
+.product-info {
+    padding: 1rem;
+    background: var(--white);
+}
+
+.sku {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.product-info h3 {
+    font-size: 1rem;
+    margin: 0.3rem 0 0.2rem;
+}
+
+.category {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: capitalize;
+}
+
+.price {
+    font-weight: 700;
+    margin-top: 0.55rem;
+}
+
+.cart-drawer {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: min(420px, 100%);
+    height: 100%;
+    background: var(--white);
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.18);
+}
+
+.cart-drawer.hidden,
+.backdrop.hidden,
+.modal {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.open {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--white);
+    width: min(520px, 92%);
+    padding: 1.75rem;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+}
+
+.cart-header,
+.cart-footer {
+    padding: 1.25rem;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-footer {
+    border-bottom: 0;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.cart-items {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem 1.25rem;
+}
+
+.cart-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.icon-btn {
+    background: none;
+    border: 0;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 70;
+}
+
+footer {
+    background: var(--black);
+    color: #aaa;
+    padding: 1.5rem 0;
+    font-size: 0.85rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+}
+
+code {
+    font-size: 0.85em;
+}

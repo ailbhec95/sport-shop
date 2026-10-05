@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX — Impossible is Training</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Amplitude Analytics with Engagement Plugin -->
+    <script src="https://cdn.amplitude.com/script/f0db16a2ac68ab1c81271aeabdb148de.js"></script>
+    <script src="https://cdn.amplitude.com/script/f0db16a2ac68ab1c81271aeabdb148de.engagement.js"></script>
+    <script>
+        if (window.engagement && window.engagement.plugin) {
+            window.amplitude.add(window.engagement.plugin());
+        }
+        if (window.sessionReplay && window.sessionReplay.plugin) {
+            window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+        }
+        window.amplitude.init('f0db16a2ac68ab1c81271aeabdb148de', {
+            fetchRemoteConfig: true,
+            autocapture: true
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <span class="stripes" aria-hidden="true"></span>
+                APEX
+            </div>
+            <ul>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#cart">Cart</a></li>
+            </ul>
+            <button type="button" class="cart-toggle" onclick="toggleCart()">
+                Cart <span id="cartCount">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <p class="eyebrow">Apex Athletics</p>
+            <h1>Impossible is training.</h1>
+            <p>Performance kit for running, football, and the gym. Simple cart events for Amplitude cart analysis.</p>
+            <a href="#shop" class="btn">Shop now</a>
+        </div>
+    </section>
+
+    <section id="shop" class="shop">
+        <div class="container">
+            <h2>Featured drops</h2>
+            <p class="lead">Opening a list fires <code>Product List Viewed</code> with <code>list_name</code> and <code>products: [{ sku, position }]</code>.</p>
+            <div class="list-tabs" id="listTabs">
+                <button type="button" class="list-tab is-active" data-list="men-shoes">men-shoes</button>
+                <button type="button" class="list-tab" data-list="women-shoes">women-shoes</button>
+                <button type="button" class="list-tab" data-list="apparel">apparel</button>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <aside id="cart" class="cart-drawer hidden" aria-label="Shopping cart">
+        <div class="cart-header">
+            <h2>Your bag</h2>
+            <button type="button" class="icon-btn" onclick="toggleCart()" aria-label="Close cart">&times;</button>
+        </div>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-footer">
+            <p class="cart-total">Total <strong id="cartTotal">$0.00</strong></p>
+            <button type="button" class="btn" onclick="checkout()">Purchase Completed</button>
+            <button type="button" class="btn-ghost" onclick="clearCart()">Clear bag</button>
+        </div>
+    </aside>
+    <div id="cartBackdrop" class="backdrop hidden" onclick="toggleCart()"></div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <button type="button" class="icon-btn modal-close" onclick="closeProductModal()">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Apex Athletics. Demo shop for Amplitude cart analysis.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
